@@ -1,0 +1,7 @@
+{
+  "worker_id": "builder",
+  "status": "KILLED",
+  "step": "killed by fleet kill-all",
+  "last_updated": "2026-04-13T21:50:32Z",
+  "cost_usd": 0
+}

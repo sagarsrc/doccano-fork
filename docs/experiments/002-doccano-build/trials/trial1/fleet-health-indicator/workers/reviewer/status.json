@@ -1,0 +1,8 @@
+{
+  "worker_id": "reviewer",
+  "status": "KILLED",
+  "task": "Review Task 5: ML Service Health Indicator",
+  "step": "killed by fleet kill-all",
+  "last_updated": "2026-04-13T21:50:22Z",
+  "cost_usd": 0
+}

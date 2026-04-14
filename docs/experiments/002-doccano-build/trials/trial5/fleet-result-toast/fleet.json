@@ -1,0 +1,45 @@
+{
+  "fleet_name": "trial5-result-toast",
+  "type": "iterative",
+  "config": {
+    "max_concurrent": 2,
+    "model": "gpt-5.4",
+    "fallback_model": "gpt-5.4",
+    "provider": "codex",
+    "reasoning_effort": "medium",
+    "record": false,
+    "max_iterations": 10,
+    "cost_cap_usd": 40.0
+  },
+  "workers": [
+    {
+      "id": "builder",
+      "type": "code-run",
+      "description": "Cold-start TDD agent: discover, plan, test, implement, commit, document",
+      "task": "Task 7: Auto-Label Result Toast",
+      "model": "gpt-5.4",
+      "provider": "codex",
+      "reasoning_effort": "medium",
+      "sandbox": "full-auto",
+      "max_budget_per_iter": 20.0
+    },
+    {
+      "id": "reviewer",
+      "type": "reviewer",
+      "description": "Critical code reviewer: verify tests are real, code correct, scope respected",
+      "task": "Review Task 7: Auto-Label Result Toast",
+      "model": "claude-opus-4-6",
+      "provider": "claude",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "builder"
+      ],
+      "max_budget_per_iter": 20.0
+    }
+  ],
+  "stop_when": {
+    "reviewer_lgtm_count": 1,
+    "max_iterations": 10,
+    "cost_cap_usd": 40.0
+  }
+}

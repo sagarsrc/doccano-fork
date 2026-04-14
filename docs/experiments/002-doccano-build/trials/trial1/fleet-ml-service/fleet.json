@@ -1,0 +1,49 @@
+{
+  "fleet_name": "trial1-ml-service",
+  "type": "iterative",
+  "config": {
+    "max_concurrent": 2,
+    "model": "gpt-5.4",
+    "fallback_model": "gpt-5.4",
+    "provider": "codex",
+    "reasoning_effort": "medium",
+    "record": false,
+    "max_iterations": 10,
+    "cost_cap_usd": 40
+  },
+  "workers": [
+    {
+      "id": "builder",
+      "type": "code-run",
+      "description": "Cold-start TDD agent: discover, plan, test, implement, commit, document",
+      "task": "Task 1: FastAPI ML Service",
+      "model": "gpt-5.4",
+      "provider": "codex",
+      "reasoning_effort": "medium",
+      "sandbox": "danger-full-access",
+      "max_budget_per_iter": 20
+    },
+    {
+      "id": "reviewer",
+      "type": "reviewer",
+      "description": "Critical code reviewer: verify tests are real, code correct, scope respected",
+      "task": "Review Task 1: FastAPI ML Service",
+      "model": "gpt-5.4",
+      "provider": "codex",
+      "reasoning_effort": "medium",
+      "depends_on": [
+        "builder"
+      ],
+      "max_budget_per_iter": 20,
+      "sandbox": "danger-full-access"
+    }
+  ],
+  "stop_when": {
+    "reviewer_lgtm_count": 1,
+    "max_iterations": 10,
+    "cost_cap_usd": 40
+  },
+  "status": "killed",
+  "launched_at": "2026-04-13T21:35:30Z",
+  "killed_at": "2026-04-13T21:50:02Z"
+}

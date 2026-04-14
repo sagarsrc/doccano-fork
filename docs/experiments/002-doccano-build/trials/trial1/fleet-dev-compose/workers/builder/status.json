@@ -1,0 +1,8 @@
+{
+  "worker_id": "builder",
+  "status": "KILLED",
+  "task": "Task 9: docker-compose.dev.yml",
+  "step": "killed by fleet kill-all",
+  "last_updated": "2026-04-13T21:50:35Z",
+  "cost_usd": 0
+}
